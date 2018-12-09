@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>hello</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+		<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		.tree {
+			background: url(img/tree.png);
+			width: 229px;
+			height: 400px;
+			margin: 5px auto;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.ball {
+			height: 15px;
+			width: 15px;
+			border-radius: 15px;
+			background-color: #e1e1e1;
+			margin-bottom: 25px;
+			transition: background-color 1.1s ease;
+		}
+
+		.deer {
+			margin: 25px auto;
+			width: 280px;
+			height: 456px;
+			background: url(img/deer-sprite.png);
+			background-size: 1956px 456px;
+			animation: deerRun 0.85s steps(7) infinite;
+		}
+
+		@keyframes deerRun {
+			0% {
+				background-position: 0 0;
+			}
+			100% {
+				background-position: 1956px 0;
+			}
+		}
+		</style>
+	</head>
+
+	<body>
+		<div class="tree">
+			<div class="ball"></div>
+			<div class="ball"></div>
+			<div class="ball"></div>
+			<div class="ball"></div>
+			<div class="ball"></div>
+			<div class="ball"></div>
+		</div>
+
+		<div class="deer"></div>
+
+		<script>
+			var balls = document.querySelectorAll('.ball');
+
+			for (var i = 0; i < balls.length; i++) {
+				(i%2) == 0 ? balls[i].style.marginLeft = '40px' : balls[i].style.marginRight = '40px';
+			}
+
+			setInterval(function() {
+				for (var i = 0; i < balls.length; i++) {
+					var r = Math.floor(Math.random()*(255-60));
+					var b = Math.floor(Math.random()*(255-60));
+					var g = Math.floor(Math.random()*(255-60));
+
+					balls[i].style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+				}
+			}, 400);
+
+
+		</script>
+	</body>
+</html>
